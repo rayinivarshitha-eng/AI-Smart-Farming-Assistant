@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DigiShivar AI - Farmer Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f1e8;
+            color: #263b2a;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 70px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2f6339;
+        }
+
+        .logo span {
+            color: #8a9b55;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: #304b35;
+            font-weight: 600;
+        }
+
+        .logout {
+            background: #356b3d;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 25px;
+        }
+
+        /* HEADER */
+        .dashboard-header {
+            padding: 45px 7% 25px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 34px;
+            color: #244b2b;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-header p {
+            color: #667466;
+            font-size: 16px;
+        }
+
+        /* FARM SECTION */
+        .farm-box {
+            margin: 10px 7% 30px;
+            background: #356b3d;
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .farm-box h2 {
+            margin-bottom: 8px;
+        }
+
+        .add-farm-btn {
+            background: white;
+            color: #356b3d;
+            border: none;
+            padding: 13px 22px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* MAIN GRID */
+        .container {
+            width: 86%;
+            margin: auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            color: #2e6036;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #687468;
+            line-height: 1.5;
+        }
+
+        .card button {
+            margin-top: 18px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 20px;
+            background: #356b3d;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* CROP SECTION */
+        .crop-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .crop-section h2 {
+            color: #2e6036;
+            margin-bottom: 20px;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccd5c9;
+            border-radius: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #405442;
+        }
+
+        /* IMAGE UPLOAD */
+        .upload-box {
+            border: 2px dashed #8ca68d;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            background: #f7faf5;
+            margin-top: 10px;
+        }
+
+        .upload-box input {
+            border: none;
+        }
+
+        #preview {
+            max-width: 250px;
+            max-height: 200px;
+            border-radius: 15px;
+            display: none;
+            margin: 15px auto;
+        }
+
+        /* RESULT */
+        .result {
+            margin-top: 20px;
+            background: #eef6ed;
+            padding: 20px;
+            border-radius: 15px;
+            display: none;
+        }
+
+        .result h3 {
+            color: #2f6339;
+            margin-bottom: 8px;
+        }
+
+        /* ALERT */
+        .alert {
+            background: #fff5d9;
+            border-left: 5px solid #d8a82d;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        /* VOICE */
+        .voice-box {
+            background: #eaf3e8;
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+        }
+
+        .voice-box button {
+            background: #356b3d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #244b2b;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .modal-content h2 {
+            color: #2e6036;
+            margin-bottom: 20px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .save-btn,
+        .close-btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            background: #356b3d;
+            color: white;
+        }
+
+        .close-btn {
+            background: #ddd;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .farm-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .nav-right a:not(.logout) {
+                display: none;
+            }
+
+            .dashboard-header h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        DigiShivar <span>AI 🌱</span>
+    </div>
+
+    <div class="nav-right">
+        <a href="index.html">Home</a>
+        <a href="#advisory">Advisory</a>
+        <a href="#alerts">Alerts</a>
+        <a href="#settings">Settings</a>
+        <a href="login.html" class="logout">Logout</a>
+    </div>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<section class="dashboard-header">
+
+    <h1>Welcome, Farmer 👨‍🌾</h1>
+
+    <p>
+        Your smart farming assistant is ready to help you.
+    </p>
+
+</section>
+
+
+<!-- FARM -->
+
+<div class="farm-box">
+
+    <div>
+        <h2>🌾 My Farm</h2>
+        <p id="farmDetails">
+            No farm added yet. Add your farm to get personalized recommendations.
+        </p>
+    </div>
+
+    <button class="add-farm-btn" onclick="openFarmModal()">
+        + Add Farm
+    </button>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- CROP SELECTION -->
+
+<section class="crop-section">
+
+    <h2>🌱 Select Your Crop</h2>
+
+    <label>Select Crop</label>
+
+    <select id="crop">
+
+        <option value="">-- Select Crop --</option>
+
+        <option value="rice">
+            Rice
+        </option>
+
+        <option value="cotton">
+            Cotton
+        </option>
+
+        <option value="maize">
+            Maize
+        </option>
+
+        <option value="chilli">
+            Chilli
+        </option>
+
+        <option value="tomato">
+            Tomato
+        </option>
+
+        <option value="groundnut">
+            Groundnut
+        </option>
+
+        <option value="soybean">
+            Soybean
+        </option>
+
+    </select>
+
+</section>
+
+
+<!-- IMAGE -->
+
+<section class="crop-section">
+
+    <h2>📷 Upload / Take Crop Image</h2>
+
+    <div class="upload-box">
+
+        <p>
+            Take a photo of your crop or upload an existing image.
+        </p>
+
+        <input
+            type="file"
+            id="cropImage"
+            accept="image/*"
+            capture="environment"
+            onchange="previewImage(event)"
+        >
+
+        <img id="preview">
+
+    </div>
+
+    <button
+        onclick="detectDisease()"
+        style="
+        margin-top:18px;
+        padding:12px 22px;
+        border:none;
+        border-radius:25px;
+        background:#356b3d;
+        color:white;
+        cursor:pointer;
+        font-weight:bold;">
+        🔍 Detect Disease
+    </button>
+
+    <div class="result" id="diseaseResult">
+
+        <h3>🦠 Disease Detection Result</h3>
+
+        <p id="diseaseText">
+            Analysis result will appear here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<div class="grid">
+
+
+    <!-- SOIL -->
+
+    <div class="card">
+
+        <div class="card-icon">🧪</div>
+
+        <h3>Soil Information</h3>
+
+        <p>
+            Check soil pH, nitrogen, phosphorus and potassium information.
+        </p>
+
+        <button onclick="showSoil()">
+            View Soil Information
+        </button>
+
+        <div id="soilResult" class="result">
+
+            <p><b>pH:</b> 6.5</p>
+            <p><b>Nitrogen:</b> Medium</p>
+            <p><b>Phosphorus:</b> High</p>
+            <p><b>Potassium:</b> Medium</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- WEATHER -->
+
+    <div class="card">
+
+        <div class="card-icon">🌤️</div>
+
+        <h3>Weather</h3>
+
+        <p>
+            Get weather information to plan farming activities.
+        </p>
+
+        <button onclick="showWeather()">
+            Check Weather
+        </button>
+
+        <div id="weatherResult" class="result">
+
+            <p>🌡️ Temperature: 28°C</p>
+            <p>💧 Humidity: 72%</p>
+            <p>🌧️ Rain Chance: 40%</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- IRRIGATION -->
+
+    <div class="card">
+
+        <div class="card-icon">💧</div>
+
+        <h3>Irrigation Recommendation</h3>
+
+        <p>
+            Get irrigation suggestions based on crop and soil conditions.
+        </p>
+
+        <button onclick="irrigation()">
+            Get Recommendation
+        </button>
+
+        <div id="irrigationResult" class="result">
+
+            <p id="irrigationText">
+                Select your crop first.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- DISEASE -->
+
+    <div class="card">
+
+        <div class="card-icon">🦠</div>
+
+        <h3>Disease Detection</h3>
+
+        <p>
+            Upload a crop image and identify possible crop diseases.
+        </p>
+
+        <button onclick="scrollToImage()">
+            Upload Image
+        </button>
+
+    </div>
+
+
+    <!-- ALERTS -->
+
+    <div class="card" id="alerts">
+
+        <div class="card-icon">🔔</div>
+
+        <h3>Alerts</h3>
+
+        <p>
+            Stay updated about weather, pests and important farming alerts.
+        </p>
+
+        <button onclick="showAlerts()">
+            View Alerts
+        </button>
+
+    </div>
+
+
+    <!-- ADVISORY -->
+
+    <div class="card" id="advisory">
+
+        <div class="card-icon">👨‍🌾</div>
+
+        <h3>AI Advisory</h3>
+
+        <p>
+            Receive smart recommendations for better crop management.
+        </p>
+
+        <button onclick="showAdvisory()">
+            Get Advisory
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ALERT SECTION -->
+
+<section class="crop-section">
+
+    <h2>🔔 Important Alerts</h2>
+
+    <div class="alert">
+
+        <b>🌧️ Weather Alert:</b>
+
+        Rain may occur in the next 24 hours.
+        Avoid unnecessary irrigation.
+    </div>
+
+    <div class="alert">
+
+        <b>🐛 Pest Alert:</b>
+
+        Monitor your crop regularly for pest activity.
+    </div>
+
+</section>
+
+
+<!-- ADVISORY -->
+
+<section class="crop-section">
+
+    <h2>👨‍🌾 Today's Farming Advisory</h2>
+
+    <p id="advisoryText">
+
+        Select your crop to receive personalized farming advice.
+
+    </p>
+
+    <button
+        onclick="showAdvisory()"
+        style="
+        margin-top:18px;
+        padding:12px 22px;
+        border:none;
+        border-radius:25px;
+        background:#356b3d;
+        color:white;
+        cursor:pointer;">
+        Generate Advisory
+    </button>
+
+</section>
+
+
+<!-- LANGUAGE / VOICE -->
+
+<section class="voice-box" id="settings">
+
+    <h2>🌐 Language & Voice Settings</h2>
+
+    <br>
+
+    <label>Choose Language</label>
+
+    <select id="language">
+
+        <option value="en-IN">
+            English
+        </option>
+
+        <option value="te-IN">
+            తెలుగు - Telugu
+        </option>
+
+        <option value="hi-IN">
+            हिन्दी - Hindi
+        </option>
+
+        <option value="ta-IN">
+            தமிழ் - Tamil
+        </option>
+
+        <option value="kn-IN">
+            ಕನ್ನಡ - Kannada
+        </option>
+
+    </select>
+
+    <button onclick="speakAdvice()">
+        🔊 Read Advisory
+    </button>
+
+    <button onclick="stopVoice()">
+        ⏹ Stop
+    </button>
+
+</section>
+
+</div>
+
+
+<!-- ADD FARM MODAL -->
+
+<div class="modal" id="farmModal">
+
+    <div class="modal-content">
+
+        <h2>🌾 Add Your Farm</h2>
+
+        <label>Farm Name</label>
+
+        <input
+            type="text"
+            id="farmName"
+            placeholder="Example: My Farm"
+        >
+
+        <label>Location</label>
+
+        <input
+            type="text"
+            id="farmLocation"
+            placeholder="Example: Warangal"
+        >
+
+        <label>Farm Area (Acres)</label>
+
+        <input
+            type="number"
+            id="farmArea"
+            placeholder="Example: 5"
+        >
+
+        <div class="modal-buttons">
+
+            <button
+                class="save-btn"
+                onclick="saveFarm()">
+                Save Farm
+            </button>
+
+            <button
+                class="close-btn"
+                onclick="closeFarmModal()">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>
+        © 2026 DigiShivar AI | Smart Agriculture Assistant 🌱
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* FARM MODAL */
+
+    function openFarmModal() {
+
+        document.getElementById("farmModal").style.display = "flex";
+
+    }
+
+
+    function closeFarmModal() {
+
+        document.getElementById("farmModal").style.display = "none";
+
+    }
+
+
+    function saveFarm() {
+
+        let name =
+            document.getElementById("farmName").value;
+
+        let location =
+            document.getElementById("farmLocation").value;
+
+        let area =
+            document.getElementById("farmArea").value;
+
+        if (name === "" || location === "" || area === "") {
+
+            alert("Please fill all farm details.");
+
+            return;
+
+        }
+
+        document.getElementById("farmDetails").innerHTML =
+            "<b>" + name + "</b> | " +
+            location + " | " +
+            area + " acres";
+
+        closeFarmModal();
+
+        alert("Farm added successfully! 🌾");
+
+    }
+
+
+    /* IMAGE PREVIEW */
+
+    function previewImage(event) {
+
+        const image =
+            document.getElementById("preview");
+
+        image.src =
+            URL.createObjectURL(event.target.files[0]);
+
+        image.style.display = "block";
+
+    }
+
+
+    /* DISEASE DETECTION */
+
+    function detectDisease() {
+
+        let crop =
+            document.getElementById("crop").value;
+
+        if (crop === "") {
+
+            alert("Please select your crop first.");
+
+            return;
+
+        }
+
+        let result =
+            document.getElementById("diseaseResult");
+
+        let text =
+            document.getElementById("diseaseText");
+
+        result.style.display = "block";
+
+        text.innerHTML =
+            "Demo result: No major disease detected. " +
+            "Continue monitoring the crop regularly. " +
+            "<br><br><b>Note:</b> Real AI disease detection " +
+            "will be connected in the backend.";
+
+    }
+
+
+    /* SOIL */
+
+    function showSoil() {
+
+        document.getElementById("soilResult")
+            .style.display = "block";
+
+    }
+
+
+    /* WEATHER */
+
+    function showWeather() {
+
+        document.getElementById("weatherResult")
+            .style.display = "block";
+
+    }
+
+
+    /* IRRIGATION */
+
+    function irrigation() {
+
+        let crop =
+            document.getElementById("crop").value;
+
+        let result =
+            document.getElementById("irrigationResult");
+
+        let text =
+            document.getElementById("irrigationText");
+
+        result.style.display = "block";
+
+        if (crop === "") {
+
+            text.innerHTML =
+                "🌱 Please select your crop first.";
+
+            return;
+
+        }
+
+        if (crop === "rice") {
+
+            text.innerHTML =
+                "💧 Rice requires regular water availability. " +
+                "Maintain suitable water levels according to the crop stage.";
+
+        }
+
+        else if (crop === "cotton") {
+
+            text.innerHTML =
+                "💧 Cotton needs controlled irrigation. " +
+                "Avoid excessive watering.";
+
+        }
+
+        else {
+
+            text.innerHTML =
+                "💧 Provide irrigation according to soil moisture. " +
+                "Avoid over-irrigation.";
+
+        }
+
+    }
+
+
+    /* ALERTS */
+
+    function showAlerts() {
+
+        alert(
+            "🔔 Alerts\n\n" +
+            "🌧️ Rain may occur in the next 24 hours.\n\n" +
+            "🐛 Monitor crops for pests."
+        );
+
+    }
+
+
+    /* ADVISORY */
+
+    function showAdvisory() {
+
+        let crop =
+            document.getElementById("crop").value;
+
+        let text =
+            document.getElementById("advisoryText");
+
+        if (crop === "") {
+
+            text.innerHTML =
+                "🌱 Please select a crop first.";
+
+            return;
+
+        }
+
+        let cropName =
+            crop.charAt(0).toUpperCase() +
+            crop.slice(1);
+
+        text.innerHTML =
+            "🌱 Advisory for <b>" +
+            cropName +
+            "</b>: Monitor soil moisture, " +
+            "check leaves regularly for pests or diseases, " +
+            "and follow recommended irrigation practices.";
+
+    }
+
+
+    /* SCROLL TO IMAGE */
+
+    function scrollToImage() {
+
+        window.scrollTo({
+            top: 430,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* VOICE */
+
+    function speakAdvice() {
+
+        let text =
+            document.getElementById("advisoryText")
+            .innerText;
+
+        let language =
+            document.getElementById("language").value;
+
+        if (!("speechSynthesis" in window)) {
+
+            alert("Voice feature is not supported in this browser.");
+
+            return;
+
+        }
+
+        let speech =
+            new SpeechSynthesisUtterance(text);
+
+        speech.lang = language;
+
+        window.speechSynthesis.speak(speech);
+
+    }
+
+
+    function stopVoice() {
+
+        window.speechSynthesis.cancel();
+
+    }
+
+</script>
+
+</body>
+</html>

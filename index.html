@@ -1,0 +1,2311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DigiShivar AI</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: white;
+            color: #1f2937;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+
+            min-height: 72px;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 10px 5%;
+
+            position: relative;
+
+            z-index: 10;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+
+        /* ================= LOGO ================= */
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            flex-shrink: 0;
+        }
+
+
+        .logo-icon {
+
+            width: 44px;
+
+            height: 44px;
+
+            background: #16a34a;
+
+            color: white;
+
+            border-radius: 7px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+
+        .logo-text h2 {
+
+            font-size: 20px;
+
+            color: #111827;
+        }
+
+
+        .logo-text p {
+
+            font-size: 12px;
+
+            color: #16803c;
+
+            margin-top: 3px;
+        }
+
+
+        /* ================= NAV LINKS ================= */
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #202124;
+
+            font-size: 14px;
+
+            padding: 9px 5px;
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #16a34a;
+        }
+
+
+        /* HOME */
+
+        .home-btn {
+
+            background: #16a34a !important;
+
+            color: white !important;
+
+            padding: 10px 16px !important;
+
+            border-radius: 6px;
+        }
+
+
+        /* ================= LANGUAGE ================= */
+
+        .language-select {
+
+            border: 1px solid #d1d5db;
+
+            outline: none;
+
+            background: white;
+
+            font-size: 14px;
+
+            color: #202124;
+
+            cursor: pointer;
+
+            padding: 9px 8px;
+
+            border-radius: 6px;
+        }
+
+
+        .language-select:focus {
+
+            border-color: #16a34a;
+        }
+
+
+        /* ================= LOGIN ================= */
+
+        .login-btn {
+
+            background: #16a34a;
+
+            color: white !important;
+
+            padding: 10px 20px !important;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+        }
+
+
+        .login-btn:hover {
+
+            background: #15803d !important;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+
+            min-height: calc(100vh - 72px);
+
+            position: relative;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(10,75,48,0.72),
+                    rgba(10,45,70,0.72)
+                ),
+
+                url("images/farm-background.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            color: white;
+
+            display: flex;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 65px 20px 55px;
+        }
+
+
+        .hero-content {
+
+            width: 100%;
+
+            max-width: 1100px;
+        }
+
+
+        .hero h1 {
+
+            font-size: 56px;
+
+            font-weight: 700;
+
+            text-shadow: 0 3px 5px rgba(0,0,0,0.25);
+        }
+
+
+        .hero h2 {
+
+            color: #ffd83d;
+
+            font-size: 30px;
+
+            margin-top: 12px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero-description {
+
+            max-width: 720px;
+
+            margin: auto;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            color: #f1f5f2;
+        }
+
+
+        /* ================= HERO BUTTON ================= */
+
+        .hero-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 30px;
+        }
+
+
+        .advice-btn {
+
+            text-decoration: none;
+
+            padding: 16px 30px;
+
+            border-radius: 13px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            background: #00b956;
+
+            color: white;
+
+            border: 2px solid #00b956;
+
+            transition: 0.3s;
+        }
+
+
+        .advice-btn:hover {
+
+            background: #009c49;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= THREE CARDS ================= */
+
+        .features {
+
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 28px;
+
+            margin: 45px auto 0;
+
+            max-width: 930px;
+        }
+
+
+        .feature-card {
+
+            min-height: 190px;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            background: rgba(65,115,75,0.58);
+
+            border: 1px solid rgba(255,255,255,0.20);
+
+            backdrop-filter: blur(5px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: 0.3s;
+        }
+
+
+        .feature-card:hover {
+
+            transform: translateY(-7px);
+
+            background: rgba(65,130,80,0.72);
+        }
+
+
+        .feature-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .green-icon {
+            background: #20c976;
+        }
+
+
+        .blue-icon {
+            background: #6879ee;
+        }
+
+
+        .orange-icon {
+            background: #f45b4f;
+        }
+
+
+        .feature-card h3 {
+
+            font-size: 17px;
+
+            margin-bottom: 10px;
+
+            color: white;
+        }
+
+
+        .feature-card p {
+
+            color: #e5eee8;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            max-width: 230px;
+        }
+
+
+        /* ================= ABOUT ================= */
+
+        .about {
+
+            background: #f4f8ef;
+
+            padding: 80px 8%;
+
+            text-align: center;
+        }
+
+
+        .about h2 {
+
+            font-size: 35px;
+
+            color: #165c40;
+
+            margin-bottom: 18px;
+        }
+
+
+        .about p {
+
+            max-width: 750px;
+
+            margin: auto;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            color: #52655e;
+        }
+
+
+        /* ================= FEATURES SECTION ================= */
+
+        .features-section {
+
+            background: white;
+
+            padding: 80px 8%;
+
+            text-align: center;
+        }
+
+
+        .features-section h2 {
+
+            color: #165c40;
+
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .features-section > p {
+
+            color: #52655e;
+
+            margin-bottom: 40px;
+        }
+
+
+        .feature-list {
+
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 25px;
+
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+
+        .feature-box {
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            background: #f4f8ef;
+
+            border: 1px solid #dce8d7;
+
+            transition: 0.3s;
+        }
+
+
+        .feature-box:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.08);
+        }
+
+
+        .feature-box h3 {
+
+            color: #16803c;
+
+            margin-bottom: 12px;
+        }
+
+
+        .feature-box p {
+
+            color: #52655e;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+
+            background: #e8f3e4;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+
+        .contact h2 {
+
+            color: #165c40;
+
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .contact p {
+
+            color: #52655e;
+
+            font-size: 16px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .contact-btn {
+
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #16803c;
+
+            color: white;
+
+            padding: 13px 28px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            background: #164d3b;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 22px;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 1000px) {
+
+            .navbar {
+
+                flex-direction: column;
+
+                gap: 12px;
+
+                padding: 15px 3%;
+            }
+
+
+            .nav-links {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .hero h1 {
+
+                font-size: 42px;
+            }
+
+
+            .features,
+            .feature-list {
+
+                grid-template-columns: 1fr;
+
+                max-width: 450px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .hero {
+
+                padding-top: 50px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 32px;
+            }
+
+
+            .hero h2 {
+
+                font-size: 22px;
+            }
+
+
+            .hero-description {
+
+                font-size: 15px;
+            }
+
+
+            .advice-btn {
+
+                width: 270px;
+
+                display: block;
+
+                margin: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================================= -->
+<!-- NAVIGATION -->
+<!-- ================================================= -->
+
+<nav class="navbar">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🌱
+        </div>
+
+        <div class="logo-text">
+
+            <h2 data-key="logo">
+                DigiShivar AI
+            </h2>
+
+            <p data-key="tagline">
+                Smart Agriculture Assistant
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="nav-links">
+
+
+        <a href="#home"
+           class="home-btn"
+           data-key="home">
+
+            🏠 Home
+
+        </a>
+
+
+        <a href="#ai"
+           data-key="aiAssistant">
+
+            💬 AI Assistant
+
+        </a>
+
+
+        <a href="#about"
+           data-key="about">
+
+            About
+
+        </a>
+
+
+        <a href="#features"
+           data-key="features">
+
+            Features
+
+        </a>
+
+
+        <a href="#contact"
+           data-key="contact">
+
+            Contact
+
+        </a>
+
+
+        <!-- LANGUAGE -->
+
+        <select
+            class="language-select"
+            id="language"
+            onchange="changeLanguage()">
+
+            <option value="en">
+                🌐 English
+            </option>
+
+            <option value="te">
+                తెలుగు
+            </option>
+
+            <option value="hi">
+                हिन्दी
+            </option>
+
+            <option value="mr">
+                मराठी
+            </option>
+
+            <option value="ta">
+                தமிழ்
+            </option>
+
+            <option value="kn">
+                ಕನ್ನಡ
+            </option>
+
+            <option value="ml">
+                മലയാളം
+            </option>
+
+            <option value="bn">
+                বাংলা
+            </option>
+
+            <option value="gu">
+                ગુજરાતી
+            </option>
+
+            <option value="pa">
+                ਪੰਜਾਬੀ
+            </option>
+
+        </select>
+
+
+        <!-- LOGIN -->
+
+        <a href="login.html"
+           class="login-btn"
+           data-key="login">
+
+            🔐 Login
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================================================= -->
+<!-- HERO -->
+<!-- ================================================= -->
+
+<section class="hero" id="home">
+
+
+    <div class="hero-content">
+
+
+        <h1 data-key="heroTitle">
+
+            Your Smart Farming Companion
+
+        </h1>
+
+
+        <h2 data-key="heroSubtitle">
+
+            Anytime, Anywhere
+
+        </h2>
+
+
+        <p class="hero-description"
+           data-key="heroDescription">
+
+            Empowering farmers with AI-driven crop advisory,
+            real-time weather insights, pest diagnosis,
+            market prices, and sustainable farming practices
+            across India.
+
+        </p>
+
+
+        <!-- BUTTON -->
+
+        <div class="hero-buttons">
+
+            <a href="login.html"
+               class="advice-btn"
+               data-key="advice">
+
+                💬 Get AI Farming Advice →
+
+            </a>
+
+        </div>
+
+
+
+        <!-- THREE CARDS -->
+
+        <div class="features">
+
+
+            <!-- CARD 1 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon green-icon">
+                    ⚡
+                </div>
+
+                <h3 data-key="aiSupportTitle">
+
+                    Real-time AI Support
+
+                </h3>
+
+                <p data-key="aiSupportText">
+
+                    Get instant answers to your farming
+                    questions with advanced AI technology.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- CARD 2 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue-icon">
+                    👥
+                </div>
+
+                <h3 data-key="communityTitle">
+
+                    Community Driven
+
+                </h3>
+
+                <p data-key="communityText">
+
+                    Connect with fellow farmers and
+                    agricultural experts nationwide.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- CARD 3 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon orange-icon">
+                    🌐
+                </div>
+
+                <h3 data-key="multiTitle">
+
+                    Multilingual
+
+                </h3>
+
+                <p data-key="multiText">
+
+                    Available in English, Telugu, Hindi,
+                    Marathi and other Indian languages.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- ABOUT -->
+<!-- ================================================= -->
+
+<section class="about" id="about">
+
+    <h2 data-key="aboutTitle">
+
+        About DigiShivar AI
+
+    </h2>
+
+
+    <p data-key="aboutText">
+
+        DigiShivar AI is a smart agriculture assistant
+        designed to help farmers make better decisions
+        using technology. It brings farming information,
+        AI assistance and useful agricultural guidance
+        together in one easy-to-use platform.
+
+    </p>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- FEATURES -->
+<!-- ================================================= -->
+
+<section class="features-section" id="features">
+
+    <h2 data-key="featuresTitle">
+
+        Smart Farming Features
+
+    </h2>
+
+
+    <p data-key="featuresDescription">
+
+        Useful tools designed to support farmers
+        throughout their farming journey.
+
+    </p>
+
+
+    <div class="feature-list">
+
+
+        <div class="feature-box">
+
+            <h3 data-key="cropTitle">
+                🌱 Crop Advisory
+            </h3>
+
+            <p data-key="cropText">
+
+                Get crop-related guidance and
+                recommendations for better
+                farming decisions.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3 data-key="soilTitle">
+                🧪 Soil Information
+            </h3>
+
+            <p data-key="soilText">
+
+                Understand soil conditions and
+                receive suitable farming
+                recommendations.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3 data-key="irrigationTitle">
+                💧 Irrigation
+            </h3>
+
+            <p data-key="irrigationText">
+
+                Get smart irrigation recommendations
+                based on crop and farm requirements.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3 data-key="diseaseTitle">
+                🦠 Disease Detection
+            </h3>
+
+            <p data-key="diseaseText">
+
+                Upload a crop image and get assistance
+                in identifying possible crop diseases.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3 data-key="alertsTitle">
+                🔔 Alerts
+            </h3>
+
+            <p data-key="alertsText">
+
+                Receive important farming alerts
+                and notifications at the right time.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3 data-key="assistantTitle">
+                🤖 AI Assistant
+            </h3>
+
+            <p data-key="assistantText">
+
+                Ask farming questions and receive
+                AI-powered agricultural assistance.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- CONTACT -->
+<!-- ================================================= -->
+
+<section class="contact" id="contact">
+
+    <h2 data-key="contactTitle">
+
+        Contact Us
+
+    </h2>
+
+
+    <p data-key="contactText">
+
+        Have questions or need support?
+        We are here to help.
+
+    </p>
+
+
+    <a href="mailto:support@digishivar.ai"
+       class="contact-btn"
+       data-key="contactButton">
+
+        Contact Support
+
+    </a>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- FOOTER -->
+<!-- ================================================= -->
+
+<footer>
+
+    <span data-key="footer">
+        © 2026 DigiShivar AI. Smart Agriculture Assistant.
+    </span>
+
+</footer>
+
+
+
+<!-- ================================================= -->
+<!-- LANGUAGE TRANSLATION -->
+<!-- ================================================= -->
+
+<script>
+
+const translations = {
+
+    /* ================= ENGLISH ================= */
+
+    en: {
+
+        logo: "DigiShivar AI",
+
+        tagline: "Smart Agriculture Assistant",
+
+        home: "🏠 Home",
+
+        aiAssistant: "💬 AI Assistant",
+
+        about: "About",
+
+        features: "Features",
+
+        contact: "Contact",
+
+        login: "🔐 Login",
+
+        heroTitle: "Your Smart Farming Companion",
+
+        heroSubtitle: "Anytime, Anywhere",
+
+        heroDescription:
+        "Empowering farmers with AI-driven crop advisory, real-time weather insights, pest diagnosis, market prices, and sustainable farming practices across India.",
+
+        advice: "💬 Get AI Farming Advice →",
+
+        aiSupportTitle: "Real-time AI Support",
+
+        aiSupportText:
+        "Get instant answers to your farming questions with advanced AI technology.",
+
+        communityTitle: "Community Driven",
+
+        communityText:
+        "Connect with fellow farmers and agricultural experts nationwide.",
+
+        multiTitle: "Multilingual",
+
+        multiText:
+        "Available in English, Telugu, Hindi, Marathi and other Indian languages.",
+
+        aboutTitle: "About DigiShivar AI",
+
+        aboutText:
+        "DigiShivar AI is a smart agriculture assistant designed to help farmers make better decisions using technology. It brings farming information, AI assistance and useful agricultural guidance together in one easy-to-use platform.",
+
+        featuresTitle: "Smart Farming Features",
+
+        featuresDescription:
+        "Useful tools designed to support farmers throughout their farming journey.",
+
+        cropTitle: "🌱 Crop Advisory",
+
+        cropText:
+        "Get crop-related guidance and recommendations for better farming decisions.",
+
+        soilTitle: "🧪 Soil Information",
+
+        soilText:
+        "Understand soil conditions and receive suitable farming recommendations.",
+
+        irrigationTitle: "💧 Irrigation",
+
+        irrigationText:
+        "Get smart irrigation recommendations based on crop and farm requirements.",
+
+        diseaseTitle: "🦠 Disease Detection",
+
+        diseaseText:
+        "Upload a crop image and get assistance in identifying possible crop diseases.",
+
+        alertsTitle: "🔔 Alerts",
+
+        alertsText:
+        "Receive important farming alerts and notifications at the right time.",
+
+        assistantTitle: "🤖 AI Assistant",
+
+        assistantText:
+        "Ask farming questions and receive AI-powered agricultural assistance.",
+
+        contactTitle: "Contact Us",
+
+        contactText:
+        "Have questions or need support? We are here to help.",
+
+        contactButton: "Contact Support",
+
+        footer:
+        "© 2026 DigiShivar AI. Smart Agriculture Assistant."
+
+    },
+
+
+    /* ================= TELUGU ================= */
+
+    te: {
+
+        logo: "డిజిషివర్ AI",
+
+        tagline: "స్మార్ట్ వ్యవసాయ సహాయకుడు",
+
+        home: "🏠 హోమ్",
+
+        aiAssistant: "💬 AI సహాయకుడు",
+
+        about: "మా గురించి",
+
+        features: "ఫీచర్లు",
+
+        contact: "సంప్రదించండి",
+
+        login: "🔐 లాగిన్",
+
+        heroTitle: "మీ స్మార్ట్ వ్యవసాయ సహచరుడు",
+
+        heroSubtitle: "ఎప్పుడైనా, ఎక్కడైనా",
+
+        heroDescription:
+        "AI ఆధారిత పంట సలహాలు, వాతావరణ సమాచారం, తెగుళ్ల గుర్తింపు, మార్కెట్ ధరలు మరియు స్థిరమైన వ్యవసాయ పద్ధతులతో రైతులకు సహాయం.",
+
+        advice: "💬 AI వ్యవసాయ సలహా పొందండి →",
+
+        aiSupportTitle: "రియల్-టైమ్ AI సహాయం",
+
+        aiSupportText:
+        "మీ వ్యవసాయ ప్రశ్నలకు AI సాంకేతికతతో వెంటనే సమాధానాలు పొందండి.",
+
+        communityTitle: "రైతుల సమాజం",
+
+        communityText:
+        "ఇతర రైతులు మరియు వ్యవసాయ నిపుణులతో అనుసంధానం అవ్వండి.",
+
+        multiTitle: "బహుభాషా సౌకర్యం",
+
+        multiText:
+        "తెలుగు, హిందీ, ఇంగ్లీష్, మరాఠీ మరియు ఇతర భారతీయ భాషల్లో అందుబాటులో ఉంది.",
+
+        aboutTitle: "డిజిషివర్ AI గురించి",
+
+        aboutText:
+        "డిజిషివర్ AI రైతులు సాంకేతికతను ఉపయోగించి మెరుగైన వ్యవసాయ నిర్ణయాలు తీసుకోవడానికి రూపొందించబడిన స్మార్ట్ వ్యవసాయ సహాయకుడు.",
+
+        featuresTitle: "స్మార్ట్ వ్యవసాయ ఫీచర్లు",
+
+        featuresDescription:
+        "వ్యవసాయ ప్రయాణంలో రైతులకు సహాయపడే ఉపయోగకరమైన సాధనాలు.",
+
+        cropTitle: "🌱 పంట సలహా",
+
+        cropText:
+        "మెరుగైన వ్యవసాయ నిర్ణయాల కోసం పంటలకు సంబంధించిన మార్గదర్శకాలు మరియు సిఫార్సులు పొందండి.",
+
+        soilTitle: "🧪 నేల సమాచారం",
+
+        soilText:
+        "నేల పరిస్థితులను తెలుసుకుని తగిన వ్యవసాయ సిఫార్సులు పొందండి.",
+
+        irrigationTitle: "💧 నీటిపారుదల",
+
+        irrigationText:
+        "పంట మరియు పొలం అవసరాలకు అనుగుణంగా స్మార్ట్ నీటిపారుదల సిఫార్సులు పొందండి.",
+
+        diseaseTitle: "🦠 పంట వ్యాధి గుర్తింపు",
+
+        diseaseText:
+        "పంట చిత్రాన్ని అప్‌లోడ్ చేసి సాధ్యమైన పంట వ్యాధులను గుర్తించడానికి సహాయం పొందండి.",
+
+        alertsTitle: "🔔 హెచ్చరికలు",
+
+        alertsText:
+        "ముఖ్యమైన వ్యవసాయ హెచ్చరికలు మరియు నోటిఫికేషన్‌లను సరైన సమయంలో పొందండి.",
+
+        assistantTitle: "🤖 AI సహాయకుడు",
+
+        assistantText:
+        "వ్యవసాయ ప్రశ్నలు అడిగి AI ఆధారిత సహాయం పొందండి.",
+
+        contactTitle: "మమ్మల్ని సంప్రదించండి",
+
+        contactText:
+        "మీకు ప్రశ్నలు ఉన్నాయా లేదా సహాయం కావాలా? మేము మీకు సహాయం చేయడానికి సిద్ధంగా ఉన్నాము.",
+
+        contactButton: "సహాయాన్ని సంప్రదించండి",
+
+        footer:
+        "© 2026 డిజిషివర్ AI. స్మార్ట్ వ్యవసాయ సహాయకుడు."
+
+    },
+
+
+    /* ================= HINDI ================= */
+
+    hi: {
+
+        logo: "डिजीशिवार AI",
+
+        tagline: "स्मार्ट कृषि सहायक",
+
+        home: "🏠 होम",
+
+        aiAssistant: "💬 AI सहायक",
+
+        about: "हमारे बारे में",
+
+        features: "फीचर्स",
+
+        contact: "संपर्क करें",
+
+        login: "🔐 लॉगिन",
+
+        heroTitle: "आपका स्मार्ट कृषि साथी",
+
+        heroSubtitle: "कभी भी, कहीं भी",
+
+        heroDescription:
+        "AI आधारित फसल सलाह, मौसम की जानकारी, कीट पहचान, बाजार भाव और टिकाऊ कृषि पद्धतियों के माध्यम से किसानों की सहायता।",
+
+        advice: "💬 AI कृषि सलाह प्राप्त करें →",
+
+        aiSupportTitle: "रियल-टाइम AI सहायता",
+
+        aiSupportText:
+        "उन्नत AI तकनीक के साथ अपने कृषि प्रश्नों के तुरंत उत्तर प्राप्त करें।",
+
+        communityTitle: "किसान समुदाय",
+
+        communityText:
+        "अन्य किसानों और कृषि विशेषज्ञों से जुड़ें।",
+
+        multiTitle: "बहुभाषी",
+
+        multiText:
+        "हिंदी, तेलुगु, अंग्रेजी, मराठी और अन्य भारतीय भाषाओं में उपलब्ध।",
+
+        aboutTitle: "डिजीशिवार AI के बारे में",
+
+        aboutText:
+        "डिजीशिवार AI किसानों को तकनीक के माध्यम से बेहतर कृषि निर्णय लेने में मदद करने वाला स्मार्ट कृषि सहायक है।",
+
+        featuresTitle: "स्मार्ट कृषि फीचर्स",
+
+        featuresDescription:
+        "किसानों की कृषि यात्रा में सहायता करने वाले उपयोगी उपकरण।",
+
+        cropTitle: "🌱 फसल सलाह",
+
+        cropText:
+        "बेहतर कृषि निर्णयों के लिए फसल संबंधी मार्गदर्शन और सुझाव प्राप्त करें।",
+
+        soilTitle: "🧪 मिट्टी की जानकारी",
+
+        soilText:
+        "मिट्टी की स्थिति समझें और उचित कृषि सुझाव प्राप्त करें।",
+
+        irrigationTitle: "💧 सिंचाई",
+
+        irrigationText:
+        "फसल और खेत की आवश्यकताओं के आधार पर स्मार्ट सिंचाई सुझाव प्राप्त करें।",
+
+        diseaseTitle: "🦠 रोग पहचान",
+
+        diseaseText:
+        "फसल की तस्वीर अपलोड करें और संभावित रोगों की पहचान में सहायता प्राप्त करें।",
+
+        alertsTitle: "🔔 अलर्ट",
+
+        alertsText:
+        "महत्वपूर्ण कृषि अलर्ट और सूचनाएं सही समय पर प्राप्त करें।",
+
+        assistantTitle: "🤖 AI सहायक",
+
+        assistantText:
+        "कृषि प्रश्न पूछें और AI आधारित सहायता प्राप्त करें।",
+
+        contactTitle: "हमसे संपर्क करें",
+
+        contactText:
+        "क्या आपके पास कोई प्रश्न है या सहायता चाहिए? हम आपकी मदद के लिए यहां हैं।",
+
+        contactButton: "सहायता से संपर्क करें",
+
+        footer:
+        "© 2026 डिजीशिवार AI. स्मार्ट कृषि सहायक।"
+
+    },
+
+
+    /* ================= MARATHI ================= */
+
+    mr: {
+
+        logo: "डिजीशिवार AI",
+
+        tagline: "स्मार्ट कृषी सहाय्यक",
+
+        home: "🏠 होम",
+
+        aiAssistant: "💬 AI सहाय्यक",
+
+        about: "आमच्याबद्दल",
+
+        features: "वैशिष्ट्ये",
+
+        contact: "संपर्क",
+
+        login: "🔐 लॉगिन",
+
+        heroTitle: "तुमचा स्मार्ट शेती साथीदार",
+
+        heroSubtitle: "कधीही, कुठेही",
+
+        heroDescription:
+        "AI आधारित पीक सल्ला, हवामान माहिती, कीड ओळख, बाजारभाव आणि शाश्वत शेती पद्धतींद्वारे शेतकऱ्यांना मदत.",
+
+        advice: "💬 AI शेती सल्ला मिळवा →",
+
+        aiSupportTitle: "रिअल-टाइम AI मदत",
+
+        aiSupportText:
+        "प्रगत AI तंत्रज्ञानाद्वारे तुमच्या शेतीविषयक प्रश्नांची त्वरित उत्तरे मिळवा.",
+
+        communityTitle: "शेतकरी समुदाय",
+
+        communityText:
+        "इतर शेतकरी आणि कृषी तज्ज्ञांशी संपर्क साधा.",
+
+        multiTitle: "बहुभाषिक",
+
+        multiText:
+        "मराठी, हिंदी, तेलुगू, इंग्रजी आणि इतर भारतीय भाषांमध्ये उपलब्ध.",
+
+        aboutTitle: "डिजीशिवार AI बद्दल",
+
+        aboutText:
+        "डिजीशिवार AI हे तंत्रज्ञानाच्या मदतीने शेतकऱ्यांना चांगले शेती निर्णय घेण्यास मदत करणारे स्मार्ट कृषी सहाय्यक आहे.",
+
+        featuresTitle: "स्मार्ट शेती वैशिष्ट्ये",
+
+        featuresDescription:
+        "शेतकऱ्यांच्या शेतीच्या प्रवासात मदत करणारी उपयुक्त साधने.",
+
+        cropTitle: "🌱 पीक सल्ला",
+
+        cropText:
+        "चांगल्या शेती निर्णयांसाठी पिकांशी संबंधित मार्गदर्शन आणि शिफारसी मिळवा.",
+
+        soilTitle: "🧪 मातीची माहिती",
+
+        soilText:
+        "मातीची स्थिती समजून योग्य शेतीविषयक शिफारसी मिळवा.",
+
+        irrigationTitle: "💧 सिंचन",
+
+        irrigationText:
+        "पीक आणि शेताच्या गरजेनुसार स्मार्ट सिंचन शिफारसी मिळवा.",
+
+        diseaseTitle: "🦠 रोग ओळख",
+
+        diseaseText:
+        "पिकाचा फोटो अपलोड करा आणि संभाव्य रोग ओळखण्यासाठी मदत मिळवा.",
+
+        alertsTitle: "🔔 सूचना",
+
+        alertsText:
+        "महत्त्वाच्या शेतीविषयक सूचना योग्य वेळी मिळवा.",
+
+        assistantTitle: "🤖 AI सहाय्यक",
+
+        assistantText:
+        "शेतीविषयक प्रश्न विचारा आणि AI आधारित मदत मिळवा.",
+
+        contactTitle: "आमच्याशी संपर्क साधा",
+
+        contactText:
+        "तुम्हाला प्रश्न आहेत किंवा मदत हवी आहे? आम्ही मदतीसाठी येथे आहोत.",
+
+        contactButton: "सहाय्याशी संपर्क साधा",
+
+        footer:
+        "© 2026 डिजीशिवार AI. स्मार्ट कृषी सहाय्यक."
+
+    },
+
+
+    /* ================= TAMIL ================= */
+
+    ta: {
+
+        logo: "டிஜிஷிவார் AI",
+
+        tagline: "ஸ்மார்ட் வேளாண்மை உதவியாளர்",
+
+        home: "🏠 முகப்பு",
+
+        aiAssistant: "💬 AI உதவியாளர்",
+
+        about: "எங்களை பற்றி",
+
+        features: "அம்சங்கள்",
+
+        contact: "தொடர்பு",
+
+        login: "🔐 உள்நுழைவு",
+
+        heroTitle: "உங்கள் ஸ்மார்ட் விவசாய துணை",
+
+        heroSubtitle: "எப்போது வேண்டுமானாலும், எங்கும்",
+
+        heroDescription:
+        "AI அடிப்படையிலான பயிர் ஆலோசனை, வானிலை தகவல், பூச்சி கண்டறிதல் மற்றும் சந்தை விலைகள் மூலம் விவசாயிகளுக்கு உதவி.",
+
+        advice: "💬 AI விவசாய ஆலோசனை பெறுங்கள் →",
+
+        aiSupportTitle: "நிகழ்நேர AI ஆதரவு",
+
+        aiSupportText:
+        "மேம்பட்ட AI தொழில்நுட்பத்தின் மூலம் உங்கள் விவசாய கேள்விகளுக்கு உடனடி பதில்களைப் பெறுங்கள்.",
+
+        communityTitle: "விவசாயிகள் சமூகம்",
+
+        communityText:
+        "மற்ற விவசாயிகள் மற்றும் வேளாண் நிபுணர்களுடன் இணையுங்கள்.",
+
+        multiTitle: "பல மொழி",
+
+        multiText:
+        "தமிழ், தெலுங்கு, இந்தி, ஆங்கிலம் மற்றும் பிற இந்திய மொழிகளில் கிடைக்கிறது.",
+
+        aboutTitle: "டிஜிஷிவார் AI பற்றி",
+
+        aboutText:
+        "டிஜிஷிவார் AI என்பது தொழில்நுட்பத்தைப் பயன்படுத்தி விவசாயிகள் சிறந்த முடிவுகளை எடுக்க உதவும் ஸ்மார்ட் வேளாண்மை உதவியாளர்.",
+
+        featuresTitle: "ஸ்மார்ட் விவசாய அம்சங்கள்",
+
+        featuresDescription:
+        "விவசாயிகளுக்கு உதவும் பயனுள்ள கருவிகள்.",
+
+        cropTitle: "🌱 பயிர் ஆலோசனை",
+
+        cropText:
+        "சிறந்த விவசாய முடிவுகளுக்கான பயிர் தொடர்பான வழிகாட்டுதல்களைப் பெறுங்கள்.",
+
+        soilTitle: "🧪 மண் தகவல்",
+
+        soilText:
+        "மண்ணின் நிலையைப் புரிந்து பொருத்தமான பரிந்துரைகளைப் பெறுங்கள்.",
+
+        irrigationTitle: "💧 நீர்ப்பாசனம்",
+
+        irrigationText:
+        "பயிர் மற்றும் பண்ணை தேவைகளின் அடிப்படையில் ஸ்மார்ட் நீர்ப்பாசன பரிந்துரைகளைப் பெறுங்கள்.",
+
+        diseaseTitle: "🦠 நோய் கண்டறிதல்",
+
+        diseaseText:
+        "பயிர் படத்தை பதிவேற்றி சாத்தியமான நோய்களை கண்டறிய உதவி பெறுங்கள்.",
+
+        alertsTitle: "🔔 எச்சரிக்கைகள்",
+
+        alertsText:
+        "முக்கியமான விவசாய எச்சரிக்கைகளை சரியான நேரத்தில் பெறுங்கள்.",
+
+        assistantTitle: "🤖 AI உதவியாளர்",
+
+        assistantText:
+        "விவசாய கேள்விகளைக் கேட்டு AI உதவியைப் பெறுங்கள்.",
+
+        contactTitle: "எங்களை தொடர்பு கொள்ளுங்கள்",
+
+        contactText:
+        "கேள்விகள் உள்ளதா? உதவி தேவைப்பட்டால் எங்களை தொடர்பு கொள்ளுங்கள்.",
+
+        contactButton: "ஆதரவைத் தொடர்பு கொள்ளுங்கள்",
+
+        footer:
+        "© 2026 டிஜிஷிவார் AI. ஸ்மார்ட் வேளாண்மை உதவியாளர்."
+
+    },
+
+
+    /* ================= KANNADA ================= */
+
+    kn: {
+
+        logo: "ಡಿಜಿಶಿವರ್ AI",
+
+        tagline: "ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಸಹಾಯಕ",
+
+        home: "🏠 ಮುಖಪುಟ",
+
+        aiAssistant: "💬 AI ಸಹಾಯಕ",
+
+        about: "ನಮ್ಮ ಬಗ್ಗೆ",
+
+        features: "ವೈಶಿಷ್ಟ್ಯಗಳು",
+
+        contact: "ಸಂಪರ್ಕ",
+
+        login: "🔐 ಲಾಗಿನ್",
+
+        heroTitle: "ನಿಮ್ಮ ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಸಹಾಯಕ",
+
+        heroSubtitle: "ಯಾವಾಗ ಬೇಕಾದರೂ, ಎಲ್ಲಿಯಾದರೂ",
+
+        heroDescription:
+        "AI ಆಧಾರಿತ ಬೆಳೆ ಸಲಹೆ, ಹವಾಮಾನ ಮಾಹಿತಿ, ಕೀಟ ಗುರುತಿಸುವಿಕೆ ಮತ್ತು ಮಾರುಕಟ್ಟೆ ಬೆಲೆಗಳ ಮೂಲಕ ರೈತರಿಗೆ ಸಹಾಯ.",
+
+        advice: "💬 AI ಕೃಷಿ ಸಲಹೆ ಪಡೆಯಿರಿ →",
+
+        aiSupportTitle: "ರಿಯಲ್-ಟೈಮ್ AI ಸಹಾಯ",
+
+        aiSupportText:
+        "ಸುಧಾರಿತ AI ತಂತ್ರಜ್ಞಾನದ ಮೂಲಕ ನಿಮ್ಮ ಕೃಷಿ ಪ್ರಶ್ನೆಗಳಿಗೆ ತಕ್ಷಣ ಉತ್ತರ ಪಡೆಯಿರಿ.",
+
+        communityTitle: "ರೈತ ಸಮುದಾಯ",
+
+        communityText:
+        "ಇತರ ರೈತರು ಮತ್ತು ಕೃಷಿ ತಜ್ಞರೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸಿ.",
+
+        multiTitle: "ಬಹುಭಾಷಾ",
+
+        multiText:
+        "ಕನ್ನಡ, ತೆಲುಗು, ಹಿಂದಿ, ಇಂಗ್ಲಿಷ್ ಮತ್ತು ಇತರ ಭಾರತೀಯ ಭಾಷೆಗಳಲ್ಲಿ ಲಭ್ಯ.",
+
+        aboutTitle: "ಡಿಜಿಶಿವರ್ AI ಬಗ್ಗೆ",
+
+        aboutText:
+        "ಡಿಜಿಶಿವರ್ AI ತಂತ್ರಜ್ಞಾನದ ಮೂಲಕ ರೈತರಿಗೆ ಉತ್ತಮ ಕೃಷಿ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುವ ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಸಹಾಯಕ.",
+
+        featuresTitle: "ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ವೈಶಿಷ್ಟ್ಯಗಳು",
+
+        featuresDescription:
+        "ರೈತರಿಗೆ ಸಹಾಯ ಮಾಡುವ ಉಪಯುಕ್ತ ಸಾಧನಗಳು.",
+
+        cropTitle: "🌱 ಬೆಳೆ ಸಲಹೆ",
+
+        cropText:
+        "ಉತ್ತಮ ಕೃಷಿ ನಿರ್ಧಾರಗಳಿಗಾಗಿ ಬೆಳೆ ಸಂಬಂಧಿತ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.",
+
+        soilTitle: "🧪 ಮಣ್ಣಿನ ಮಾಹಿತಿ",
+
+        soilText:
+        "ಮಣ್ಣಿನ ಪರಿಸ್ಥಿತಿಯನ್ನು ಅರ್ಥಮಾಡಿಕೊಂಡು ಸೂಕ್ತ ಕೃಷಿ ಸಲಹೆ ಪಡೆಯಿರಿ.",
+
+        irrigationTitle: "💧 ನೀರಾವರಿ",
+
+        irrigationText:
+        "ಬೆಳೆ ಮತ್ತು ಹೊಲದ ಅಗತ್ಯಗಳ ಆಧಾರದ ಮೇಲೆ ಸ್ಮಾರ್ಟ್ ನೀರಾವರಿ ಸಲಹೆ ಪಡೆಯಿರಿ.",
+
+        diseaseTitle: "🦠 ರೋಗ ಪತ್ತೆ",
+
+        diseaseText:
+        "ಬೆಳೆ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು ಸಾಧ್ಯವಾದ ರೋಗಗಳನ್ನು ಗುರುತಿಸಲು ಸಹಾಯ ಪಡೆಯಿರಿ.",
+
+        alertsTitle: "🔔 ಎಚ್ಚರಿಕೆಗಳು",
+
+        alertsText:
+        "ಪ್ರಮುಖ ಕೃಷಿ ಎಚ್ಚರಿಕೆಗಳನ್ನು ಸರಿಯಾದ ಸಮಯದಲ್ಲಿ ಪಡೆಯಿರಿ.",
+
+        assistantTitle: "🤖 AI ಸಹಾಯಕ",
+
+        assistantText:
+        "ಕೃಷಿ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಿ ಮತ್ತು AI ಆಧಾರಿತ ಸಹಾಯ ಪಡೆಯಿರಿ.",
+
+        contactTitle: "ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ",
+
+        contactText:
+        "ಪ್ರಶ್ನೆಗಳಿವೆಯೇ? ಸಹಾಯ ಬೇಕಾದರೆ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+
+        contactButton: "ಬೆಂಬಲವನ್ನು ಸಂಪರ್ಕಿಸಿ",
+
+        footer:
+        "© 2026 ಡಿಜಿಶಿವರ್ AI. ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಸಹಾಯಕ."
+
+    },
+
+
+    /* ================= MALAYALAM ================= */
+
+    ml: {
+
+        logo: "ഡിജിശിവർ AI",
+
+        tagline: "സ്മാർട്ട് കാർഷിക സഹായി",
+
+        home: "🏠 ഹോം",
+
+        aiAssistant: "💬 AI സഹായി",
+
+        about: "ഞങ്ങളെക്കുറിച്ച്",
+
+        features: "സവിശേഷതകൾ",
+
+        contact: "ബന്ധപ്പെടുക",
+
+        login: "🔐 ലോഗിൻ",
+
+        heroTitle: "നിങ്ങളുടെ സ്മാർട്ട് കാർഷിക സഹായി",
+
+        heroSubtitle: "എപ്പോൾ വേണമെങ്കിലും, എവിടെയും",
+
+        heroDescription:
+        "AI അടിസ്ഥാനമാക്കിയുള്ള വിള ഉപദേശം, കാലാവസ്ഥാ വിവരങ്ങൾ, കീട രോഗ നിർണ്ണയം, വിപണി വിലകൾ എന്നിവയിലൂടെ കർഷകരെ സഹായിക്കുന്നു.",
+
+        advice: "💬 AI കാർഷിക ഉപദേശം നേടുക →",
+
+        aiSupportTitle: "റിയൽ-ടൈം AI പിന്തുണ",
+
+        aiSupportText:
+        "നൂതന AI സാങ്കേതികവിദ്യ ഉപയോഗിച്ച് നിങ്ങളുടെ കാർഷിക ചോദ്യങ്ങൾക്ക് ഉടനടി ഉത്തരങ്ങൾ നേടുക.",
+
+        communityTitle: "കർഷക സമൂഹം",
+
+        communityText:
+        "മറ്റ് കർഷകരുമായും കാർഷിക വിദഗ്ധരുമായും ബന്ധപ്പെടുക.",
+
+        multiTitle: "ബഹുഭാഷാ",
+
+        multiText:
+        "മലയാളം, തെലുങ്ക്, ഹിന്ദി, ഇംഗ്ലീഷ് എന്നിവയുൾപ്പെടെ നിരവധി ഭാഷകളിൽ ലഭ്യമാണ്.",
+
+        aboutTitle: "ഡിജിശിവർ AIയെക്കുറിച്ച്",
+
+        aboutText:
+        "സാങ്കേതികവിദ്യ ഉപയോഗിച്ച് മികച്ച കാർഷിക തീരുമാനങ്ങൾ എടുക്കാൻ കർഷകരെ സഹായിക്കുന്ന സ്മാർട്ട് കാർഷിക സഹായിയാണ് ഡിജിശിവർ AI.",
+
+        featuresTitle: "സ്മാർട്ട് കാർഷിക സവിശേഷതകൾ",
+
+        featuresDescription:
+        "കർഷകരെ സഹായിക്കുന്ന ഉപയോഗപ്രദമായ ഉപകരണങ്ങൾ.",
+
+        cropTitle: "🌱 വിള ഉപദേശം",
+
+        cropText:
+        "മികച്ച കാർഷിക തീരുമാനങ്ങൾക്കായി വിള സംബന്ധമായ മാർഗ്ഗനിർദ്ദേശങ്ങൾ നേടുക.",
+
+        soilTitle: "🧪 മണ്ണിന്റെ വിവരങ്ങൾ",
+
+        soilText:
+        "മണ്ണിന്റെ അവസ്ഥ മനസ്സിലാക്കി അനുയോജ്യമായ കാർഷിക നിർദ്ദേശങ്ങൾ നേടുക.",
+
+        irrigationTitle: "💧 ജലസേചനം",
+
+        irrigationText:
+        "വിളയുടെയും കൃഷിയിടത്തിന്റെയും ആവശ്യകത അനുസരിച്ച് സ്മാർട്ട് ജലസേചന നിർദ്ദേശങ്ങൾ നേടുക.",
+
+        diseaseTitle: "🦠 രോഗ നിർണ്ണയം",
+
+        diseaseText:
+        "വിളയുടെ ചിത്രം അപ്‌ലോഡ് ചെയ്ത് സാധ്യമായ രോഗങ്ങൾ തിരിച്ചറിയാൻ സഹായം നേടുക.",
+
+        alertsTitle: "🔔 അറിയിപ്പുകൾ",
+
+        alertsText:
+        "പ്രധാനപ്പെട്ട കാർഷിക അറിയിപ്പുകൾ ശരിയായ സമയത്ത് നേടുക.",
+
+        assistantTitle: "🤖 AI സഹായി",
+
+        assistantText:
+        "കാർഷിക ചോദ്യങ്ങൾ ചോദിച്ച് AI സഹായം നേടുക.",
+
+        contactTitle: "ഞങ്ങളെ ബന്ധപ്പെടുക",
+
+        contactText:
+        "ചോദ്യങ്ങളുണ്ടോ? സഹായം ആവശ്യമുണ്ടെങ്കിൽ ഞങ്ങളെ ബന്ധപ്പെടുക.",
+
+        contactButton: "പിന്തുണയുമായി ബന്ധപ്പെടുക",
+
+        footer:
+        "© 2026 ഡിജിശിവർ AI. സ്മാർട്ട് കാർഷിക സഹായി."
+
+    },
+
+
+    /* ================= BENGALI ================= */
+
+    bn: {
+
+        logo: "ডিজিশিবার AI",
+
+        tagline: "স্মার্ট কৃষি সহায়ক",
+
+        home: "🏠 হোম",
+
+        aiAssistant: "💬 AI সহায়ক",
+
+        about: "আমাদের সম্পর্কে",
+
+        features: "ফিচার",
+
+        contact: "যোগাযোগ",
+
+        login: "🔐 লগইন",
+
+        heroTitle: "আপনার স্মার্ট কৃষি সহায়ক",
+
+        heroSubtitle: "যেকোনো সময়, যেকোনো জায়গায়",
+
+        heroDescription:
+        "AI ভিত্তিক ফসল পরামর্শ, আবহাওয়ার তথ্য, রোগ নির্ণয় এবং বাজার মূল্যের মাধ্যমে কৃষকদের সহায়তা।",
+
+        advice: "💬 AI কৃষি পরামর্শ নিন →",
+
+        aiSupportTitle: "রিয়েল-টাইম AI সহায়তা",
+
+        aiSupportText:
+        "উন্নত AI প্রযুক্তির মাধ্যমে আপনার কৃষি প্রশ্নের তাৎক্ষণিক উত্তর পান।",
+
+        communityTitle: "কৃষক সম্প্রদায়",
+
+        communityText:
+        "অন্যান্য কৃষক এবং কৃষি বিশেষজ্ঞদের সাথে যোগাযোগ করুন।",
+
+        multiTitle: "বহুভাষিক",
+
+        multiText:
+        "বাংলা, তেলুগু, হিন্দি, ইংরেজি এবং অন্যান্য ভারতীয় ভাষায় উপলব্ধ।",
+
+        aboutTitle: "ডিজিশিবার AI সম্পর্কে",
+
+        aboutText:
+        "ডিজিশিবার AI প্রযুক্তির মাধ্যমে কৃষকদের আরও ভালো কৃষি সিদ্ধান্ত নিতে সাহায্য করার জন্য তৈরি একটি স্মার্ট কৃষি সহায়ক।",
+
+        featuresTitle: "স্মার্ট কৃষি ফিচার",
+
+        featuresDescription:
+        "কৃষকদের সহায়তা করার জন্য দরকারী সরঞ্জাম।",
+
+        cropTitle: "🌱 ফসল পরামর্শ",
+
+        cropText:
+        "ভালো কৃষি সিদ্ধান্তের জন্য ফসল সম্পর্কিত নির্দেশনা পান।",
+
+        soilTitle: "🧪 মাটির তথ্য",
+
+        soilText:
+        "মাটির অবস্থা বুঝুন এবং উপযুক্ত কৃষি পরামর্শ পান।",
+
+        irrigationTitle: "💧 সেচ",
+
+        irrigationText:
+        "ফসল এবং খামারের প্রয়োজন অনুযায়ী স্মার্ট সেচ পরামর্শ পান।",
+
+        diseaseTitle: "🦠 রোগ শনাক্তকরণ",
+
+        diseaseText:
+        "ফসলের ছবি আপলোড করে সম্ভাব্য রোগ শনাক্ত করতে সাহায্য পান।",
+
+        alertsTitle: "🔔 সতর্কতা",
+
+        alertsText:
+        "গুরুত্বপূর্ণ কৃষি সতর্কতা সঠিক সময়ে পান।",
+
+        assistantTitle: "🤖 AI সহায়ক",
+
+        assistantText:
+        "কৃষি প্রশ্ন করুন এবং AI ভিত্তিক সহায়তা পান।",
+
+        contactTitle: "যোগাযোগ করুন",
+
+        contactText:
+        "প্রশ্ন আছে? সাহায্যের প্রয়োজন হলে আমাদের সাথে যোগাযোগ করুন।",
+
+        contactButton: "সহায়তার সাথে যোগাযোগ করুন",
+
+        footer:
+        "© 2026 ডিজিশিবার AI. স্মার্ট কৃষি সহায়ক।"
+
+    },
+
+
+    /* ================= GUJARATI ================= */
+
+    gu: {
+
+        logo: "ડિજિશિવર AI",
+
+        tagline: "સ્માર્ટ કૃષિ સહાયક",
+
+        home: "🏠 હોમ",
+
+        aiAssistant: "💬 AI સહાયક",
+
+        about: "અમારા વિશે",
+
+        features: "વિશેષતાઓ",
+
+        contact: "સંપર્ક",
+
+        login: "🔐 લૉગિન",
+
+        heroTitle: "તમારો સ્માર્ટ ખેતી સહાયક",
+
+        heroSubtitle: "ક્યારેય પણ, ક્યાંય પણ",
+
+        heroDescription:
+        "AI આધારિત પાક સલાહ, હવામાન માહિતી, જીવાત ઓળખ અને બજાર ભાવ દ્વારા ખેડૂતોને મદદ.",
+
+        advice: "💬 AI ખેતી સલાહ મેળવો →",
+
+        aiSupportTitle: "રિયલ-ટાઇમ AI સહાય",
+
+        aiSupportText:
+        "અદ્યતન AI ટેકનોલોજી દ્વારા તમારા ખેતી સંબંધિત પ્રશ્નોના તાત્કાલિક જવાબ મેળવો.",
+
+        communityTitle: "ખેડૂત સમુદાય",
+
+        communityText:
+        "અન્ય ખેડૂતો અને કૃષિ નિષ્ણાતો સાથે જોડાઓ.",
+
+        multiTitle: "બહુભાષી",
+
+        multiText:
+        "ગુજરાતી, હિન્દી, તેલુગુ, અંગ્રેજી અને અન્ય ભારતીય ભાષાઓમાં ઉપલબ્ધ.",
+
+        aboutTitle: "ડિજિશિવર AI વિશે",
+
+        aboutText:
+        "ડિજિશિવર AI ખેડૂતોને ટેકનોલોજીની મદદથી વધુ સારા ખેતી નિર્ણયો લેવામાં મદદ કરતું સ્માર્ટ કૃષિ સહાયક છે.",
+
+        featuresTitle: "સ્માર્ટ ખેતી વિશેષતાઓ",
+
+        featuresDescription:
+        "ખેડૂતોને મદદ કરવા માટે ઉપયોગી સાધનો.",
+
+        cropTitle: "🌱 પાક સલાહ",
+
+        cropText:
+        "વધુ સારા ખેતી નિર્ણયો માટે પાક સંબંધિત માર્ગદર્શન મેળવો.",
+
+        soilTitle: "🧪 જમીનની માહિતી",
+
+        soilText:
+        "જમીનની સ્થિતિ સમજો અને યોગ્ય કૃષિ ભલામણો મેળવો.",
+
+        irrigationTitle: "💧 સિંચાઈ",
+
+        irrigationText:
+        "પાક અને ખેતરની જરૂરિયાત મુજબ સ્માર્ટ સિંચાઈ ભલામણો મેળવો.",
+
+        diseaseTitle: "🦠 રોગ શોધ",
+
+        diseaseText:
+        "પાકનો ફોટો અપલોડ કરો અને સંભવિત રોગોની ઓળખમાં મદદ મેળવો.",
+
+        alertsTitle: "🔔 ચેતવણીઓ",
+
+        alertsText:
+        "મહત્વપૂર્ણ કૃષિ ચેતવણીઓ યોગ્ય સમયે મેળવો.",
+
+        assistantTitle: "🤖 AI સહાયક",
+
+        assistantText:
+        "ખેતી સંબંધિત પ્રશ્નો પૂછો અને AI આધારિત સહાય મેળવો.",
+
+        contactTitle: "અમારો સંપર્ક કરો",
+
+        contactText:
+        "પ્રશ્નો છે? મદદની જરૂર હોય તો અમારો સંપર્ક કરો.",
+
+        contactButton: "સપોર્ટનો સંપર્ક કરો",
+
+        footer:
+        "© 2026 ડિજિશિવર AI. સ્માર્ટ કૃષિ સહાયક."
+
+    },
+
+
+    /* ================= PUNJABI ================= */
+
+    pa: {
+
+        logo: "ਡਿਜੀਸ਼ਿਵਰ AI",
+
+        tagline: "ਸਮਾਰਟ ਖੇਤੀ ਸਹਾਇਕ",
+
+        home: "🏠 ਹੋਮ",
+
+        aiAssistant: "💬 AI ਸਹਾਇਕ",
+
+        about: "ਸਾਡੇ ਬਾਰੇ",
+
+        features: "ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ",
+
+        contact: "ਸੰਪਰਕ",
+
+        login: "🔐 ਲਾਗਇਨ",
+
+        heroTitle: "ਤੁਹਾਡਾ ਸਮਾਰਟ ਖੇਤੀ ਸਾਥੀ",
+
+        heroSubtitle: "ਕਦੇ ਵੀ, ਕਿਤੇ ਵੀ",
+
+        heroDescription:
+        "AI ਅਧਾਰਿਤ ਫਸਲ ਸਲਾਹ, ਮੌਸਮ ਦੀ ਜਾਣਕਾਰੀ, ਕੀੜਿਆਂ ਦੀ ਪਛਾਣ ਅਤੇ ਬਾਜ਼ਾਰ ਕੀਮਤਾਂ ਰਾਹੀਂ ਕਿਸਾਨਾਂ ਦੀ ਮਦਦ।",
+
+        advice: "💬 AI ਖੇਤੀ ਸਲਾਹ ਲਵੋ →",
+
+        aiSupportTitle: "ਰੀਅਲ-ਟਾਈਮ AI ਸਹਾਇਤਾ",
+
+        aiSupportText:
+        "ਉੱਨਤ AI ਤਕਨਾਲੋਜੀ ਨਾਲ ਆਪਣੇ ਖੇਤੀਬਾੜੀ ਸਵਾਲਾਂ ਦੇ ਤੁਰੰਤ ਜਵਾਬ ਪ੍ਰਾਪਤ ਕਰੋ।",
+
+        communityTitle: "ਕਿਸਾਨ ਭਾਈਚਾਰਾ",
+
+        communityText:
+        "ਹੋਰ ਕਿਸਾਨਾਂ ਅਤੇ ਖੇਤੀਬਾੜੀ ਮਾਹਿਰਾਂ ਨਾਲ ਜੁੜੋ।",
+
+        multiTitle: "ਬਹੁਭਾਸ਼ੀ",
+
+        multiText:
+        "ਪੰਜਾਬੀ, ਹਿੰਦੀ, ਤੇਲਗੂ, ਅੰਗਰੇਜ਼ੀ ਅਤੇ ਹੋਰ ਭਾਰਤੀ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਉਪਲਬਧ।",
+
+        aboutTitle: "ਡਿਜੀਸ਼ਿਵਰ AI ਬਾਰੇ",
+
+        aboutText:
+        "ਡਿਜੀਸ਼ਿਵਰ AI ਇੱਕ ਸਮਾਰਟ ਖੇਤੀ ਸਹਾਇਕ ਹੈ ਜੋ ਕਿਸਾਨਾਂ ਨੂੰ ਤਕਨਾਲੋਜੀ ਦੀ ਮਦਦ ਨਾਲ ਬਿਹਤਰ ਖੇਤੀਬਾੜੀ ਫੈਸਲੇ ਲੈਣ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹੈ।",
+
+        featuresTitle: "ਸਮਾਰਟ ਖੇਤੀ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ",
+
+        featuresDescription:
+        "ਕਿਸਾਨਾਂ ਦੀ ਮਦਦ ਕਰਨ ਲਈ ਉਪਯੋਗੀ ਸਾਧਨ।",
+
+        cropTitle: "🌱 ਫਸਲ ਸਲਾਹ",
+
+        cropText:
+        "ਬਿਹਤਰ ਖੇਤੀਬਾੜੀ ਫੈਸਲਿਆਂ ਲਈ ਫਸਲ ਸੰਬੰਧੀ ਮਾਰਗਦਰਸ਼ਨ ਪ੍ਰਾਪਤ ਕਰੋ।",
+
+        soilTitle: "🧪 ਮਿੱਟੀ ਦੀ ਜਾਣਕਾਰੀ",
+
+        soilText:
+        "ਮਿੱਟੀ ਦੀ ਸਥਿਤੀ ਨੂੰ ਸਮਝੋ ਅਤੇ ਢੁਕਵੀਆਂ ਖੇਤੀ ਸਿਫਾਰਸ਼ਾਂ ਪ੍ਰਾਪਤ ਕਰੋ।",
+
+        irrigationTitle: "💧 ਸਿੰਚਾਈ",
+
+        irrigationText:
+        "ਫਸਲ ਅਤੇ ਖੇਤ ਦੀਆਂ ਲੋੜਾਂ ਅਨੁਸਾਰ ਸਮਾਰਟ ਸਿੰਚਾਈ ਸਿਫਾਰਸ਼ਾਂ ਪ੍ਰਾਪਤ ਕਰੋ।",
+
+        diseaseTitle: "🦠 ਬਿਮਾਰੀ ਦੀ ਪਛਾਣ",
+
+        diseaseText:
+        "ਫਸਲ ਦੀ ਤਸਵੀਰ ਅਪਲੋਡ ਕਰੋ ਅਤੇ ਸੰਭਾਵਿਤ ਬਿਮਾਰੀਆਂ ਦੀ ਪਛਾਣ ਵਿੱਚ ਮਦਦ ਪ੍ਰਾਪਤ ਕਰੋ।",
+
+        alertsTitle: "🔔 ਚੇਤਾਵਨੀਆਂ",
+
+        alertsText:
+        "ਮਹੱਤਵਪੂਰਨ ਖੇਤੀਬਾੜੀ ਚੇਤਾਵਨੀਆਂ ਸਹੀ ਸਮੇਂ 'ਤੇ ਪ੍ਰਾਪਤ ਕਰੋ।",
+
+        assistantTitle: "🤖 AI ਸਹਾਇਕ",
+
+        assistantText:
+        "ਖੇਤੀਬਾੜੀ ਦੇ ਸਵਾਲ ਪੁੱਛੋ ਅਤੇ AI ਅਧਾਰਿਤ ਸਹਾਇਤਾ ਪ੍ਰਾਪਤ ਕਰੋ।",
+
+        contactTitle: "ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ",
+
+        contactText:
+        "ਕੋਈ ਸਵਾਲ ਹੈ? ਮਦਦ ਦੀ ਲੋੜ ਹੋਣ 'ਤੇ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।",
+
+        contactButton: "ਸਹਾਇਤਾ ਨਾਲ ਸੰਪਰਕ ਕਰੋ",
+
+        footer:
+        "© 2026 ਡਿਜੀਸ਼ਿਵਰ AI. ਸਮਾਰਟ ਖੇਤੀ ਸਹਾਇਕ।"
+
+    }
+
+};
+
+
+/* ================================================= */
+/* CHANGE LANGUAGE */
+/* ================================================= */
+
+function changeLanguage() {
+
+    const selectedLanguage =
+        document.getElementById("language").value;
+
+    const selectedText =
+        translations[selectedLanguage];
+
+    const elements =
+        document.querySelectorAll("[data-key]");
+
+
+    elements.forEach(function(element) {
+
+        const key =
+            element.getAttribute("data-key");
+
+        if (selectedText[key]) {
+
+            element.textContent =
+                selectedText[key];
+
+        }
+
+    });
+
+
+    /* Change HTML language */
+
+    document.documentElement.lang =
+        selectedLanguage;
+
+}
+
+</script>
+    document.documentElement.lang =
+        selectedLanguage;
+
+}
+
+</script>
+
+
+<!-- BACKEND CONNECTION -->
+
+<script>
+
+const BACKEND_URL = "http://localhost:5000";
+
+
+// Test backend
+fetch(BACKEND_URL + "/")
+    .then(response => response.json())
+    .then(data => {
+        console.log("Backend Connected:", data);
+    })
+    .catch(error => {
+        console.error("Backend connection failed:", error);
+    });
+
+
+// Get crops
+function getCrops() {
+
+    fetch(BACKEND_URL + "/api/crops")
+        .then(response => response.json())
+        .then(data => {
+            console.log("Crop Data:", data);
+        })
+        .catch(error => {
+            console.error("Crop API Error:", error);
+        });
+
+}
+
+
+// Get weather
+function getWeather() {
+
+    fetch(BACKEND_URL + "/api/weather")
+        .then(response => response.json())
+        .then(data => {
+            console.log("Weather Data:", data);
+        })
+        .catch(error => {
+            console.error("Weather API Error:", error);
+        });
+
+}
+
+
+// Get alerts
+function getAlerts() {
+
+    fetch(BACKEND_URL + "/api/alerts")
+        .then(response => response.json())
+        .then(data => {
+            console.log("Alerts:", data);
+        })
+        .catch(error => {
+            console.error("Alerts API Error:", error);
+        });
+
+}
+
+
+// Ask AI
+function askAI(question) {
+
+    fetch(BACKEND_URL + "/api/ai-advice", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            question: question
+        })
+
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("AI Advice:", data);
+    })
+    .catch(error => {
+        console.error("AI Advice Error:", error);
+    });
+
+}
+
+
+// Test APIs
+getCrops();
+getWeather();
+getAlerts();
+
+</script>
+
+
+</body>
+</html>
+
+</body>
+
+</html>

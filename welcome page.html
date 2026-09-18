@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DigiShivar AI - Smart Agriculture Assistant</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #123f2c;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 72px;
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+
+            background: #16a34a;
+            color: white;
+
+            border-radius: 7px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+        .logo-text h2 {
+            font-size: 20px;
+            color: #111827;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: #16803c;
+            margin-top: 3px;
+        }
+
+
+        /* NAVIGATION */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #202124;
+
+            font-size: 14px;
+
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            padding: 9px 5px;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #16a34a;
+        }
+
+
+        /* HOME */
+
+        .home-btn {
+            background: #16a34a !important;
+            color: white !important;
+
+            padding: 10px 16px !important;
+
+            border-radius: 6px;
+        }
+
+
+        /* LANGUAGE */
+
+        .language-select {
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            font-size: 14px;
+
+            color: #202124;
+
+            cursor: pointer;
+
+            padding: 9px 3px;
+        }
+
+        .language-select:hover {
+            color: #16a34a;
+        }
+
+
+        /* LOGIN */
+
+        .login-btn {
+
+            background: #16a34a;
+
+            color: white !important;
+
+            padding: 10px 18px !important;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+        }
+
+        .login-btn:hover {
+            background: #15803d !important;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+
+            min-height: calc(100vh - 72px);
+
+            position: relative;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(10, 75, 48, 0.72),
+                    rgba(10, 45, 70, 0.72)
+                ),
+
+                url("images/farm-background.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            color: white;
+
+            display: flex;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 70px 20px 60px;
+        }
+
+
+        .hero-content {
+
+            width: 100%;
+
+            max-width: 1100px;
+        }
+
+
+        /* MAIN HEADING */
+
+        .hero h1 {
+
+            font-size: 56px;
+
+            font-weight: 700;
+
+            margin-top: 5px;
+
+            text-shadow:
+                0 3px 5px rgba(0,0,0,0.25);
+        }
+
+
+        .hero h2 {
+
+            color: #ffd83d;
+
+            font-size: 30px;
+
+            margin-top: 12px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero-description {
+
+            max-width: 720px;
+
+            margin: auto;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            color: #f1f5f2;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .hero-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            margin-top: 30px;
+        }
+
+
+        .hero-buttons a {
+
+            text-decoration: none;
+
+            padding: 16px 30px;
+
+            border-radius: 13px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            transition: 0.3s;
+        }
+
+
+        .advice-btn {
+
+            background: #00b956;
+
+            color: white;
+
+            border: 2px solid #00b956;
+        }
+
+
+        .advice-btn:hover {
+
+            background: #009c49;
+
+            transform: translateY(-2px);
+        }
+
+
+        .learn-btn {
+
+            color: white;
+
+            border: 2px solid white;
+
+            background: rgba(255,255,255,0.08);
+        }
+
+
+        .learn-btn:hover {
+
+            background: white;
+
+            color: #155e3b;
+        }
+
+
+        /* ================= FEATURE CARDS ================= */
+
+        .features {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 28px;
+
+            margin: 45px auto 0;
+
+            max-width: 930px;
+        }
+
+
+        .feature-card {
+
+            min-height: 190px;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(65, 115, 75, 0.58);
+
+            border: 1px solid
+                rgba(255,255,255,0.20);
+
+            backdrop-filter: blur(5px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: 0.3s;
+        }
+
+
+        .feature-card:hover {
+
+            transform: translateY(-7px);
+
+            background:
+                rgba(65, 130, 80, 0.72);
+        }
+
+
+        /* ICON */
+
+        .feature-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .green-icon {
+            background: #20c976;
+        }
+
+        .blue-icon {
+            background: #6879ee;
+        }
+
+        .orange-icon {
+            background: #f45b4f;
+        }
+
+
+        .feature-card h3 {
+
+            font-size: 17px;
+
+            margin-bottom: 10px;
+
+            color: white;
+        }
+
+
+        .feature-card p {
+
+            color: #e5eee8;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            max-width: 230px;
+        }
+
+
+        /* ================= ABOUT ================= */
+
+        .about {
+
+            background: #f4f8ef;
+
+            color: #174d3c;
+
+            padding: 80px 8%;
+
+            text-align: center;
+        }
+
+
+        .about h2 {
+
+            font-size: 35px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .about p {
+
+            max-width: 750px;
+
+            margin: auto;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            color: #52655e;
+        }
+
+
+        /* ================= FEATURES SECTION ================= */
+
+        .features-section {
+
+            background: white;
+
+            padding: 80px 8%;
+
+            text-align: center;
+        }
+
+
+        .features-section h2 {
+
+            color: #165c40;
+
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .features-section p {
+
+            color: #52655e;
+
+            margin-bottom: 40px;
+        }
+
+
+        .feature-list {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+
+        .feature-box {
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            background: #f4f8ef;
+
+            border: 1px solid #dce8d7;
+
+            transition: 0.3s;
+        }
+
+
+        .feature-box:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(0,0,0,0.08);
+        }
+
+
+        .feature-box h3 {
+
+            color: #16803c;
+
+            margin-bottom: 12px;
+        }
+
+
+        .feature-box p {
+
+            margin: 0;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+
+            background: #e8f3e4;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+
+        .contact h2 {
+
+            color: #165c40;
+
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .contact p {
+
+            color: #52655e;
+
+            font-size: 16px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .contact-btn {
+
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #16803c;
+
+            color: white;
+
+            padding: 13px 28px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+        }
+
+
+        .contact-btn:hover {
+
+            background: #0d5e2b;
+        }
+
+
+        /* ================= DECORATIVE CIRCLES ================= */
+
+        .circle {
+
+            position: absolute;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+        }
+
+
+        .circle-one {
+
+            width: 70px;
+
+            height: 70px;
+
+            background:
+                rgba(75, 190, 100, 0.15);
+
+            left: 30px;
+
+            top: 70px;
+        }
+
+
+        .circle-two {
+
+            width: 60px;
+
+            height: 60px;
+
+            background:
+                rgba(80, 130, 255, 0.15);
+
+            right: 70px;
+
+            top: 140px;
+        }
+
+
+        .circle-three {
+
+            width: 90px;
+
+            height: 90px;
+
+            background:
+                rgba(150, 100, 240, 0.12);
+
+            right: 20px;
+
+            bottom: 60px;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            background: #164d3b;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 22px;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 1000px) {
+
+            .navbar {
+
+                padding: 12px 3%;
+
+                height: auto;
+
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+
+            .nav-links {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 8px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 42px;
+            }
+
+
+            .features,
+            .feature-list {
+
+                grid-template-columns: 1fr;
+
+                max-width: 450px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .hero {
+
+                padding-top: 50px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 32px;
+            }
+
+
+            .hero h2 {
+
+                font-size: 22px;
+            }
+
+
+            .hero-description {
+
+                font-size: 15px;
+            }
+
+
+            .hero-buttons {
+
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+
+            .hero-buttons a {
+
+                width: 270px;
+
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="navbar">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🌱
+        </div>
+
+        <div class="logo-text">
+
+            <h2>
+                DigiShivar AI
+            </h2>
+
+            <p>
+                Smart Agriculture Assistant
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="nav-links">
+
+
+        <a href="#home" class="home-btn">
+            🏠 Home
+        </a>
+
+
+        <a href="#ai">
+            💬 AI Assistant
+        </a>
+
+
+        <a href="#about">
+            About
+        </a>
+
+
+        <a href="#features">
+            Features
+        </a>
+
+
+        <a href="#contact">
+            Contact
+        </a>
+
+
+        <a href="#learn">
+            Learn More
+        </a>
+
+
+        <!-- LANGUAGE -->
+
+        <select
+            class="language-select"
+            id="language"
+            onchange="changeLanguage()">
+
+            <option value="en">
+                🌐 English
+            </option>
+
+            <option value="te">
+                తెలుగు
+            </option>
+
+            <option value="hi">
+                हिन्दी
+            </option>
+
+            <option value="mr">
+                मराठी
+            </option>
+
+            <option value="ta">
+                தமிழ்
+            </option>
+
+            <option value="kn">
+                ಕನ್ನಡ
+            </option>
+
+            <option value="ml">
+                മലയാളം
+            </option>
+
+            <option value="bn">
+                বাংলা
+            </option>
+
+            <option value="gu">
+                ગુજરાતી
+            </option>
+
+            <option value="pa">
+                ਪੰਜਾਬੀ
+            </option>
+
+        </select>
+
+
+        <!-- LOGIN LAST -->
+
+        <a href="login.html" class="login-btn">
+            🔐 Login
+        </a>
+
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+
+    <div class="circle circle-one"></div>
+
+    <div class="circle circle-two"></div>
+
+    <div class="circle circle-three"></div>
+
+
+    <div class="hero-content">
+
+
+        <h1>
+            Your Smart Farming Companion
+        </h1>
+
+
+        <h2>
+            Anytime, Anywhere
+        </h2>
+
+
+        <p class="hero-description">
+
+            Empowering farmers with AI-driven crop advisory,
+            real-time weather insights, pest diagnosis,
+            market prices, and sustainable farming practices
+            across India.
+
+        </p>
+
+
+        <!-- BUTTONS -->
+
+        <div class="hero-buttons">
+
+
+            <a href="login.html"
+               class="advice-btn">
+
+                💬 Get AI Farming Advice →
+
+            </a>
+
+
+            <a href="#learn"
+               class="learn-btn">
+
+                ▶ Learn More
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- FEATURE CARDS -->
+
+        <div class="features">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon green-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Real-time AI Support
+                </h3>
+
+                <p>
+                    Get instant answers to your farming
+                    questions with advanced AI technology.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue-icon">
+                    👥
+                </div>
+
+                <h3>
+                    Community Driven
+                </h3>
+
+                <p>
+                    Connect with fellow farmers and
+                    agricultural experts nationwide.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon orange-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Multilingual
+                </h3>
+
+                <p>
+                    Available in English, Telugu, Hindi,
+                    Marathi and other Indian languages.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <h2>
+        About DigiShivar AI
+    </h2>
+
+    <p>
+        DigiShivar AI is a smart agriculture assistant designed
+        to help farmers make better decisions using technology.
+        It brings farming information, AI assistance and useful
+        agricultural guidance together in one easy-to-use platform.
+    </p>
+
+</section>
+
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features-section" id="features">
+
+    <h2>
+        Smart Farming Features
+    </h2>
+
+    <p>
+        Useful tools designed to support farmers throughout
+        their farming journey.
+    </p>
+
+
+    <div class="feature-list">
+
+
+        <div class="feature-box">
+
+            <h3>
+                🌱 Crop Advisory
+            </h3>
+
+            <p>
+                Get crop-related guidance and recommendations
+                for better farming decisions.
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3>
+                🧪 Soil Information
+            </h3>
+
+            <p>
+                Understand soil conditions and receive
+                suitable farming recommendations.
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3>
+                💧 Irrigation
+            </h3>
+
+            <p>
+                Get smart irrigation recommendations
+                based on crop and farm requirements.
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3>
+                🦠 Disease Detection
+            </h3>
+
+            <p>
+                Upload a crop image and get assistance
+                in identifying possible crop diseases.
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3>
+                🔔 Alerts
+            </h3>
+
+            <p>
+                Receive important farming alerts and
+                notifications at the right time.
+            </p>
+
+        </div>
+
+
+        <div class="feature-box">
+
+            <h3>
+                🤖 AI Assistant
+            </h3>
+
+            <p>
+                Ask farming questions and receive
+                AI-powered agricultural assistance.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= LEARN MORE ================= -->
+
+<section class="about" id="learn">
+
+    <h2>
+        Learn More
+    </h2>
+
+    <p>
+        Explore smart agricultural solutions that can help
+        farmers improve crop management, understand soil,
+        manage irrigation, detect crop diseases and make
+        informed farming decisions.
+    </p>
+
+</section>
+
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <h2>
+        Contact Us
+    </h2>
+
+    <p>
+        Have questions or need support? We are here to help.
+    </p>
+
+    <a href="mailto:support@digishivar.ai"
+       class="contact-btn">
+
+        Contact Support
+
+    </a>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 DigiShivar AI.
+    Smart Agriculture Assistant.
+
+</footer>
+
+
+
+<!-- ================= LANGUAGE SCRIPT ================= -->
+
+<script>
+
+function changeLanguage() {
+
+    const language =
+        document.getElementById("language").value;
+
+    if (language === "en") {
+
+        alert("English selected");
+
+    }
+
+    else if (language === "te") {
+
+        alert("తెలుగు భాష ఎంచుకోబడింది");
+
+    }
+
+    else if (language === "hi") {
+
+        alert("हिन्दी भाषा चुनी गई");
+
+    }
+
+    else if (language === "mr") {
+
+        alert("मराठी भाषा निवडली");
+
+    }
+
+    else if (language === "ta") {
+
+        alert("தமிழ் மொழி தேர்ந்தெடுக்கப்பட்டது");
+
+    }
+
+    else if (language === "kn") {
+
+        alert("ಕನ್ನಡ ಭಾಷೆ ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ");
+
+    }
+
+    else if (language === "ml") {
+
+        alert("മലയാളം തിരഞ്ഞെടുത്തു");
+
+    }
+
+    else if (language === "bn") {
+
+        alert("বাংলা ভাষা নির্বাচন করা হয়েছে");
+
+    }
+
+    else if (language === "gu") {
+
+        alert("ગુજરાતી ભાષા પસંદ કરવામાં આવી");
+
+    }
+
+    else if (language === "pa") {
+
+        alert("ਪੰਜਾਬੀ ਭਾਸ਼ਾ ਚੁਣੀ ਗਈ");
+
+    }
+
+}
+
+</script>
+
+
+</body>
+</html>
